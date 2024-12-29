@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- <div class="h3">{{bookDetails.value | json}}</div> -->
+    <form [formGroup]="bookDetails" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Title</label>
+            <input type="text" name="title" formControlName="title" class="form-control"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+                @if(titleValid?.touched && titleValid?.hasError('required')){
+                    <span class="text-danger">Title Is Required</span>
+                }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Autor</label>
+            <input type="text" name="author" formControlName="author" class="form-control"
+                id="exampleInputPassword1">
+                @if(authorValid?.touched && authorValid?.hasError('required')){
+                    <span class="text-danger">Author Is Required</span>
+                }
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">genre</label>
+            <input type="text" name="genre" formControlName="genre" class="form-control"
+                id="exampleInputPassword1">
+                @if(genreValid?.touched && genreValid?.hasError('required')){
+                    <span class="text-danger">Genre Is Required</span>
+                }
+        </div>
+      
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">publishedYear</label>
+            <input type="text" name="publishedYear" formControlName="publishedYear"
+                class="form-control" id="exampleInputPassword1">
+                @if(publishedYearValid?.touched && publishedYearValid?.hasError('required')){
+                    <span class="text-danger">Published Year Is Required</span>
+                }
+        </div>
+        <button type="submit" *ngIf="bookId !== null" [disabled]="bookDetails.invalid" class="btn btn-success">Updated</button>
+        <button type="submit" *ngIf="bookId === null" [disabled]="bookDetails.invalid" class="btn btn-success">Create</button>
+    </form>
+</div>
