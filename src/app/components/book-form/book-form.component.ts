@@ -40,6 +40,7 @@ export class BookFormComponent implements OnInit {
     }
   }
 
+  // get => readonly property 
   get titleValid() {
     return this.bookDetails.get('title');
   }
@@ -60,7 +61,7 @@ export class BookFormComponent implements OnInit {
         title: res.title,
         genre: res.genre,
         author: res.author,
-        publishedYear: res.publishedYear
+        publishedYear: res.publishedYear     
       })
     })
   }
@@ -71,7 +72,7 @@ export class BookFormComponent implements OnInit {
       const updatedBook: Book = {
         id: this.bookId,
         title: this.bookDetails.value.title,
-        author: this.bookDetails.value.author,
+        author: this.bookDetails.value.author, 
         genre: this.bookDetails.value.genre,
         publishedYear: this.bookDetails.value.publishedYear
       };
